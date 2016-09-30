@@ -13,7 +13,7 @@ int main()
 	next[0]=-1;i=0;j=-1;
 	while(i<nm)
 	{
-		if(j==-1||s[i]==s[j])
+		if(j==-1||m[i]==m[j])
 		{
 			++i;++j;
 			if(m[i]!=m[j])next[i]=j;else next[i]=next[j];
