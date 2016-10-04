@@ -65,7 +65,6 @@ void init()
     
     memset(ans, 0, sizeof(ans));
     memset(vis, 0 , sizeof(vis));
-    
     index = 0;
 }
 
@@ -74,9 +73,7 @@ void reverse(int a, int b)
     while (a < b)
     {
         swap(ans[a], ans[b]);
-        
-        a++;
-        
+        a++; 
         b--;
     }
 }
@@ -86,21 +83,16 @@ void expand()
     while (true)
     {
         int i;
-        
         for (i = 1; i <= n; ++i) 
         {
             if (!vis[i] && map[i][t])//未被访问且与t相连 
             {
                 ans[index++] = i;
-                
                 vis[i] = true;
-                
-                t = i;
-                
+                t = i;       
                 break;
             }
         }
-        
         if (i > n) break;//无法扩展 
     }
 }
@@ -115,20 +107,14 @@ void Hamilton()
     {
         if (map[i][s])
         {
-            t = i;
-            
+            t = i;       
             break;
         }
     }
-    
     vis[s] = true;
-    
     vis[t] = true;
-    
     ans[index++] = s;
-    
     ans[index++] = t;
-    
     
     while (true)
     {
@@ -152,9 +138,7 @@ void Hamilton()
                 if (map[ans[i+1]][s] && map[ans[i]][t])
                 {
                     reverse(i+1, index-1);//倒置ans[i+1]到ans[index-1] 
-                    
                     t = ans[index-1];//更新t 
-                    
                     break;
                 }
             }
@@ -174,25 +158,17 @@ void Hamilton()
                     if (map[ans[i]][j])
                     {
                         s = ans[i-1];
-                        
                         t = j;
-                        
                         reverse(0, i-1);
-                        
                         reverse(i,index-1);
-                        
                         ans[index++] = j;
-                        
-                        vis[j] = true;
-                        
+                        vis[j] = true;       
                         break;
                     }
-                }
-                
+                }       
                 if (map[ans[i]][j])break;//记得有2个循环，要break两次 
             }
         }
-        
         //继续返回，从t扩展。。 
     }
 }
@@ -202,25 +178,18 @@ int main()
     while (cin >> n >> m, n||m)
     {
         n *= 2;
-        
         init();
-        
         int temp1, temp2;
         for (int i = 0; i < m; ++i)
         {
             cin >> temp1 >> temp2;
-            
-            map[temp1][temp2] = 0;
-            
+            map[temp1][temp2] = 0;   
             map[temp2][temp1] = 0;
         }
-        
         Hamilton();
-        
         cout << ans[0];
         for (int i = 1; i < index; ++i)
-            cout << ' ' << ans[i];
-        
+            cout << ' ' << ans[i]; 
         cout << endl;
     }
 }

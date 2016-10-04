@@ -111,14 +111,24 @@ int find(int l,int r,int x)
 	return min(find(l,mid,a[x].ls),find(mid+1,r,a[x].rs));
 }
 
+inline void read(int &x) {
+    char ch=getchar();
+    while(ch<'0'||ch>'9') ch=getchar();
+    x=0;
+    while(ch<='9'&&ch>='0'){
+        x=x*10+ch-'0';
+        ch=getchar();
+    }
+}
+
 int main()
 {
-	scanf("%d%d",&n,&m);
-	for(i=1;i<=n;i++)scanf("%d",&c[i]);
+	read(n);read(m);
+	for(i=1;i<=n;i++)read(c[i]);
 	k=1;mt(1,n);
 	for(i=1;i<=m;i++)
 	{
-		scan3(l,j,k);
+		read(l);read(j);read(k);
 		if(find(j,k,1)<l)
 		{
 			printf("-1\n%d",i);

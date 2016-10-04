@@ -14,19 +14,6 @@ complex<double> a[maxn],b[maxn],c[maxn],temp[maxn];
 
 int n1,n2,m;
 
-/*
-int reverse_add(int x)
-{
-	for(int l=1<<bit_length;(x^=l)<l;l>>=1);
-	return x;
-}
-
-void bit_reverse(int n, complex_t *x)
-{
-
-}
-*/
-
 void init_epsilon(int n)
 {
 	for(int i=0;i!=n;i++)

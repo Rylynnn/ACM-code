@@ -1,70 +1,79 @@
 #include<iostream>
 #include<cstdio>
 #include<queue>
+#define maxn 1005					//µãÊý
+#define maxm 80005					//±ßÊý
 #define INF 0x3f3f3f3f
+#define rever(x) (mem+((x-mem)^1))
 using namespace std;
 struct edge
 {
-	int n,v;
+	int s,t,v,c;
 	edge* next;
-}mem[2000005],*head[2000],*store[505];
+}mem[maxm],*head[maxn],*prev[maxn];
 queue<int> q;
-int cnt,n;
-int dis[2000];
-char ch;
-void add_edge(int s,int t,int v)
+int cnt=-1,n;
+int dis[maxn];
+int S,T;
+void add_edge(int s,int t,int v,int c)
 {
-	mem[cnt].n=t;mem[cnt].v=v;
-	mem[cnt].next=head[s];head[s]=mem+cnt;
-	cnt++;
-	mem[cnt].n=s;mem[cnt].v=0;
-	mem[cnt].next=head[t];head[t]=mem+cnt;
-	cnt++;
+	mem[++cnt].s=s;mem[cnt].t=t;mem[cnt].v=v;mem[cnt].c=c;mem[cnt].next=head[s];head[s]=mem+cnt;
+	mem[++cnt].s=t;mem[cnt].t=s;mem[cnt].v=0;mem[cnt].c=-c;mem[cnt].next=head[t];head[t]=mem+cnt;
 }
-bool bfs(int x)
+bool bfs()
 {
 	for (int i=0;i<=n;i++) dis[i]=INF;
-	q.push(x);dis[x]=0;
+	q.push(S);dis[S]=0;
 	while(!q.empty())
 	{
 		for (edge *it=head[q.front()];it;it=it->next)
-		if (it->v&&dis[it->n]==INF)
+		if (it->v&&dis[q.front()]+it->c<dis[it->t])
 		{
-			dis[it->n]=dis[q.front()]+1;
-			q.push(it->n);
+			dis[it->t]=dis[q.front()]+it->c;
+			prev[it->t]=it;
+			q.push(it->t);
 		}
 		q.pop();
 	}
-	return (dis[n]!=INF);
+	return (dis[T]!=INF);
 }
-int dinic(int x,int f)
+int cost=0;
+int dinic()
 {
-	if (x==n) return f;
-	for (edge* it=head[x];it;it=it->next)
-	if (dis[it->n]==dis[x]+1&&it->v)
+	int flow=0;
+	while(bfs())
 	{
-		int nowf=dinic(it->n,min(f,it->v));
-		if (nowf)
+		int augflow=INF,tmpcost=0;
+		for (edge* it=prev[T];it;it=prev[it->s])
 		{
-			it->v-=nowf;
-			mem[(it-mem)^1].v+=nowf;
-			return nowf;
+			augflow=min(augflow,it->v);
+			tmpcost+=it->c;
 		}
+		for (edge* it=prev[T];it;it=prev[it->s])
+		{
+			it->v-=augflow;
+			rever(it)->v+=augflow;
+		}
+		flow+=augflow;cost+=augflow*tmpcost;
 	}
+	return flow;
+}
+int N,M,A,B,C;
+int main()
+{
+	freopen("in.txt","r",stdin);
+	freopen("out.txt","w",stdout);
+	scanf("%d%d",&N,&M);
+	S=0;T=N+1;n=T;
+	add_edge(S,1,2,0);add_edge(N,T,2,0);
+	for (int i=1;i<=M;i++)
+	{
+		scanf("%d%d%d",&A,&B,&C);
+		add_edge(A,B,1,C);
+		add_edge(B,A,1,C);
+	}
+	dinic();
+	printf("%d\n",cost);
 	return 0;
 }
-int DINIC(int x)
-{
-	int ths=0;
-	while(bfs(x))
-	{
-		while(1)
-		{
-			int tmp=dinic(x,INF);
-			if (!tmp) break;
-			ths+=t;
-		}
-	}
-	return ths;
-}
-//flow=DINIC(source);
+
