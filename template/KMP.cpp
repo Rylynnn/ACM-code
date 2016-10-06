@@ -1,29 +1,46 @@
+#include<iostream>
 #include<cstdio>
 #include<cstring>
+#define maxn 1000005
+using namespace std;
 
-int next[200005];
-int i,j,k,l,ns,nm;
-char s[500005],m[200005];
-
+int nxt[maxn];
+char origin_string[maxn];
+char target_string[maxn];
+void get_nxt()
+{
+	int n=strlen(target_string);
+	nxt[0]=0;nxt[1]=0;
+	for (int i=1;i<n;i++)
+	{
+		int j=nxt[i];
+		while(j&&target_string[i]!=target_string[j]) j=nxt[j];
+		nxt[i+1]=target_string[i]==target_string[j]?j+1:0;
+	}
+}
+int kmp()
+{
+	int n=strlen(origin_string);
+	int m=strlen(target_string);
+	int j=0,cnt=0;
+	for (int i=0;i<n;i++)
+	{
+		while(j&&origin_string[i]!=target_string[j]) j=nxt[j];
+		if (origin_string[i]==target_string[j]) j++;
+		if (j==m) {cnt++;j=nxt[j];}
+	}
+	return cnt;
+}
 int main()
 {
-	gets(s);
-	gets(m);
-	ns=strlen(s);nm=strlen(m);
-	next[0]=-1;i=0;j=-1;
-	while(i<nm)
+	int _;
+	scanf("%d",&_);
+	while(_--)
 	{
-		if(j==-1||m[i]==m[j])
-		{
-			++i;++j;
-			if(m[i]!=m[j])next[i]=j;else next[i]=next[j];
-		}else j=next[j];                      
-	};
-	for(i=0,j=0;i<ns;i++)
-	{
-		while(s[i]!=m[j]&&j>0)j=next[j-1];
-		if(s[i]==m[j])j++;
-		if(j>=nm){printf("%d\n",i-j+1);j=next[j-1];}
+		scanf("%s",target_string);
+		scanf("%s",origin_string);
+		get_nxt();
+		printf("%d\n",kmp());
 	}
 	return 0;
 }
