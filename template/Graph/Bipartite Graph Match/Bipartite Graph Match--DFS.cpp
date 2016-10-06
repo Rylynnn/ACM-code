@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+ï»¿#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -7,7 +7,7 @@ int vis[1005];
 int vv[1005],res[1005];
 int i,j,k,l,m,n,T;
 
-void dfs(int x)//È¾É«Çø±ð¶þ·ÖÍ¼
+void dfs(int x)//æŸ“è‰²åŒºåˆ«äºŒåˆ†å›¾
 {
 	for(unsigned int i=0;i<g[x].size();i++)
 	{
@@ -26,17 +26,17 @@ bool dfss(int x)
 	{
 		int v=g[x][i];
 		if(vv[v])continue;
-		vv[v]=1;//Èç¹ûµ±Ç°½áµãÒÑ±»ËÑË÷¹ý(¼ôÖ¦)
-		if(res[v]==0||dfss(res[v]))//Ñ°ÕÒÔö¹ãÂ·
+		vv[v]=1;//å¦‚æžœå½“å‰ç»“ç‚¹å·²è¢«æœç´¢è¿‡(å‰ªæž)
+		if(res[v]==0||dfss(res[v]))//å¯»æ‰¾å¢žå¹¿è·¯
 		{
-			res[v]=x;//res±íÊ¾Óë¸ÃµãÆ¥ÅäµÄµã±àºÅ
+			res[v]=x;//resè¡¨ç¤ºä¸Žè¯¥ç‚¹åŒ¹é…çš„ç‚¹ç¼–å·
 			return true;
 		}
 	}
 	return false;
 }
 
-int main()//±¾³ÌÐòÄ¬ÈÏ¶þ·ÖÍ¼£¬·Ç¶þ·ÖÍ¼»á³ö´í
+int main()//æœ¬ç¨‹åºé»˜è®¤äºŒåˆ†å›¾ï¼ŒéžäºŒåˆ†å›¾ä¼šå‡ºé”™
 {
 	memset(vis,0,sizeof(vis));
 	scanf("%d%d",&n,&m);
@@ -48,14 +48,14 @@ int main()//±¾³ÌÐòÄ¬ÈÏ¶þ·ÖÍ¼£¬·Ç¶þ·ÖÍ¼»á³ö´í
 		g[k].push_back(j);
 	}
 	for(i=1;i<=n;i++)
-		if(!vis[i]){vis[i]=1;dfs(i);}//ÏÈ½øÐÐºÚ°×È¾É«£¬Çø·Ö¿ª¶þ·ÖÍ¼
+		if(!vis[i]){vis[i]=1;dfs(i);}//å…ˆè¿›è¡Œé»‘ç™½æŸ“è‰²ï¼ŒåŒºåˆ†å¼€äºŒåˆ†å›¾
 	memset(res,0,sizeof(res));k=0;
-	for(i=1;i<=n;i++)//½øÐÐÔö¹ã
+	for(i=1;i<=n;i++)//è¿›è¡Œå¢žå¹¿
 		if(vis[i]==1)
 		{
 			memset(vv,0,sizeof(vv));
 			if(dfss(i))k++;
 		}
-	printf("%d",k);//×î´óÆ¥ÅäÊý
+	printf("%d",k);//æœ€å¤§åŒ¹é…æ•°
 	return 0;
 }

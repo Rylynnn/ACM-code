@@ -1,9 +1,9 @@
-struct data{
+锘縮truct data{
     int l,r,v,size,rnd,w;
 }tr[100005];
 int n,size,root,ans;
 
-void update(int k)//更新结点信息
+void update(int k)//鏇存柊缁撶偣淇℃伅
 {
     tr[k].size=tr[tr[k].l].size+tr[tr[k].r].size+tr[k].w;
 }

@@ -1,12 +1,12 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<cstdio>
 #include<queue>
 #include<algorithm>
 #include<cstring>
 #include<cmath>
 using namespace std;
-#define maxn 205						//×î´óµãÊý
-#define maxm 205						//×î´ó±ßÊý
+#define maxn 205						//æœ€å¤§ç‚¹æ•°
+#define maxm 205						//æœ€å¤§è¾¹æ•°
 #define rever(x) (mem+((x-mem)^1))
 struct edge
 {
@@ -30,7 +30,7 @@ void bfs()
 {
 	queue<int> q;
 	while(!q.empty()) q.pop();
-	for (int i=1;i<=n;i++) d[i]=maxn-1;				//ÓÉ³õÊ¼ÏÂ±ê¾ö¶¨01
+	for (int i=1;i<=n;i++) d[i]=maxn-1;				//ç”±åˆå§‹ä¸‹æ ‡å†³å®š01
 	d[T]=0;q.push(T);
 	while(!q.empty())
 	{
@@ -45,13 +45,13 @@ void bfs()
 		}
 	}
 	memset(numbs,0,sizeof(numbs));
-	for (int i=1;i<=n;i++) numbs[d[i]]++;			//ÓÉ³õÊ¼ÏÂ±ê¾ö¶¨01			
+	for (int i=1;i<=n;i++) numbs[d[i]]++;			//ç”±åˆå§‹ä¸‹æ ‡å†³å®š01			
 }
 
 int isap()
 {
 	int flow=0;
-	for (int i=1;i<=n;i++) cur[i]=head[i];			//ÓÉ³õÊ¼ÏÂ±ê¾ö¶¨01
+	for (int i=1;i<=n;i++) cur[i]=head[i];			//ç”±åˆå§‹ä¸‹æ ‡å†³å®š01
 	int u=S;
 	while(d[S]<n)
 	{

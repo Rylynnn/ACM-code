@@ -1,4 +1,4 @@
-#include<cstdio>
+ï»¿#include<cstdio>
 #include<cmath>
 #include<algorithm>
 #include<vector>
@@ -73,8 +73,8 @@ void fft_main(int a[], bool reverse)
 			a[i] = mul(a[i], t);
 	}
 }
-//È·±£Êı×éÖĞµÄÊıĞ¡ÓÚmod(mod<2^30)£¬Êı×éĞèÁô×ã2^(lognÏòÉÏÈ¡Õû+1)µÄ¿Õ¼ä£¬ºóÃæÌî³ä0
-//²¢ÇÒmodÎªĞÎÈçm*2^k+1µÄËØÊı£¬2^k>=2*n
+//ç¡®ä¿æ•°ç»„ä¸­çš„æ•°å°äºmod(mod<2^30)ï¼Œæ•°ç»„éœ€ç•™è¶³2^(lognå‘ä¸Šå–æ•´+1)çš„ç©ºé—´ï¼Œåé¢å¡«å……0
+//å¹¶ä¸”modä¸ºå½¢å¦‚m*2^k+1çš„ç´ æ•°ï¼Œ2^k>=2*n
 void fft(int a[], int b[], int n, int mod)
 {
 	fft_init(n, mod);
@@ -83,7 +83,7 @@ void fft(int a[], int b[], int n, int mod)
 		a[i] = mul(a[i], b[i]);
 	fft_main(a, 1);
 }
-//È·±£modÁ½Á½»¥ÖÊ£¬retmodÈÎÒâ
+//ç¡®ä¿modä¸¤ä¸¤äº’è´¨ï¼Œretmodä»»æ„
 void chineseRemainder(const int mod[], int *a[], int ret[], int num, int n, int retMod)
 {
 	int kk[30], mulMod[30][30], mulModr[30], mulretMod[30];
@@ -110,4 +110,4 @@ void chineseRemainder(const int mod[], int *a[], int ret[], int num, int n, int 
 			ret[i] = add(ret[i], mul(kk[j] % MOD, mulretMod[j]));
 	}
 }
-//¸½Âú×ãÌõ¼ş´óÕûÊı£º167772161, 469762049, 754974721
+//é™„æ»¡è¶³æ¡ä»¶å¤§æ•´æ•°ï¼š167772161, 469762049, 754974721

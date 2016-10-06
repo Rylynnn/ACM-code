@@ -1,8 +1,8 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<cstdio>
 #include<queue>
-#define maxn 1005					//µãÊý
-#define maxm 80005					//±ßÊý
+#define maxn 1005					//ç‚¹æ•°
+#define maxm 80005					//è¾¹æ•°
 #define INF 0x3f3f3f3f
 #define rever(x) (mem+((x-mem)^1))
 using namespace std;

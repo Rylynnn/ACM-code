@@ -1,15 +1,15 @@
-int n,m,s,t,k,dis[MAXN];
+ï»¿int n,m,s,t,k,dis[MAXN];
 struct node
 {
          int v,c;
          node(int v,int c):v(v),c(c){}
-         inline bool operator<(const node &b) const//ÓÃÓÚÓÅÏÈ¶ÓÁĞÏÈ³öµÄÌõ¼ş
+         inline bool operator<(const node &b) const//ç”¨äºä¼˜å…ˆé˜Ÿåˆ—å…ˆå‡ºçš„æ¡ä»¶
          {
                    return c+dis[v]>b.c+dis[b.v];
          }
 };
-vector<node> map1[MAXN];//ÓÃÓÚdijkstraËã·¨
-vector<node> map2[MAXN];//ÓÃÓÚA_starËã·¨
+vector<node> map1[MAXN];//ç”¨äºdijkstraç®—æ³•
+vector<node> map2[MAXN];//ç”¨äºA_starç®—æ³•
 void dijkstra()
 {
          int i,find[MAXN],v;
@@ -38,7 +38,7 @@ int A_star()
          if(dis[s]==INF)return -1;
          priority_queue<node> heap;
          memset(cnt,0,sizeof(cnt));
-         heap.push(node(s,0));//0ÊÇg£¨x£©
+         heap.push(node(s,0));//0æ˜¯gï¼ˆxï¼‰
          while(!heap.empty())
          {
                    v=heap.top().v;
@@ -60,7 +60,7 @@ int main()
          {
                    cin>>u>>v>>c;
                    map2[u].push_back(node(v,c));
-                   map1[v].push_back(node(u,c));//·´Ïò´¢´æÇó¸÷½Úµãµ½Ä¿±ê½ÚµãµÄ×î¶Ì¾àÀë
+                   map1[v].push_back(node(u,c));//åå‘å‚¨å­˜æ±‚å„èŠ‚ç‚¹åˆ°ç›®æ ‡èŠ‚ç‚¹çš„æœ€çŸ­è·ç¦»
          }
          cin>>s>>t>>k;
          if(s==t)k++;

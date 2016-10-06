@@ -1,4 +1,4 @@
-//¶ÔÄÐÐÔ(na)×îÓÅ
+ï»¿//å¯¹ç”·æ€§(na)æœ€ä¼˜
 const int maxn=2005;
 
 int na[maxn][maxn],nv[maxn][maxn];

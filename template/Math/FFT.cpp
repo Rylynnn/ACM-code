@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+ï»¿#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -46,7 +46,7 @@ void DFT(int n,complex<double>*  buffer,int offset,int step,complex<double>* eps
 	for(int i=0;i!=n;i++)buffer[i*step+offset]=temp[i];
 }
 
-//IDFT½«DFTµÄepsilon¸ÄÎªarti_epsilon
+//IDFTå°†DFTçš„epsilonæ”¹ä¸ºarti_epsilon
 
 void FFT(int m,complex<double>* a,complex<double>* b,complex<double>* c)
 {
@@ -59,7 +59,7 @@ void FFT(int m,complex<double>* a,complex<double>* b,complex<double>* c)
 	for(int i=0;i<=m;i++)c[i]/=mm;
 }
 
-int init()//n1,n2±íÊ¾¶àÏîÊ½´ÎÊý
+int init()//n1,n2è¡¨ç¤ºå¤šé¡¹å¼æ¬¡æ•°
 {
 	double x,y;
 	scanf("%d%d",&n1,&n2);

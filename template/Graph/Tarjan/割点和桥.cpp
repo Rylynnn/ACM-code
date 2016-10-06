@@ -1,4 +1,4 @@
-int dfs(int u,int fat)
+﻿int dfs(int u,int fat)
 {
 	int lowu,lowv;
 	lowu=pre[u]=++dfs_clock;

@@ -1,4 +1,4 @@
-struct tree
+﻿struct tree
 {
 	int fail,num,fat;
 	int hi;

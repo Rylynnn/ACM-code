@@ -1,4 +1,4 @@
-#include<cstdio>
+ï»¿#include<cstdio>
 #include<typeinfo>
 #include<cstdlib>
 #include<algorithm>
@@ -33,7 +33,7 @@ T power(T a, T b, T mod){
 	}
 	return ret;
 }
-//nÎªĞ¡ÓÚ2^63µÄ·Ç1ÆæÊı£¬ÕıÈ·ĞÔ100%
+//nä¸ºå°äº2^63çš„é1å¥‡æ•°ï¼Œæ­£ç¡®æ€§100%
 template <typename T>
 bool millerRabin(T n)
 {

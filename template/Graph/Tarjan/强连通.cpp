@@ -1,4 +1,4 @@
-//споРм╪
+О╩©//Ф°┴Е░▒Е⌡╬
 
 int pre[maxn],low[maxn],a[maxn],sccno[maxn],tot[maxn];
 int edge[100005][2];

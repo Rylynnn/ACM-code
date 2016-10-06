@@ -1,4 +1,4 @@
-int n;						//µãÊı
+ï»¿int n;						//ç‚¹æ•°
 struct node
 {
 	int v,dis;

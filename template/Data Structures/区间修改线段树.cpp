@@ -1,4 +1,4 @@
-struct tree
+﻿struct tree
 {
 	int mi,ls,rs,ll,rr,add;
 }a[3*maxn];

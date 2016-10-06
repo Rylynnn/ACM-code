@@ -1,4 +1,4 @@
-#define type int//type ¿ÉÑ¡Ôñint»òÕßdouble
+ï»¿#define type int//type å¯é€‰æ‹©intæˆ–è€…double
 
 const type inf=2147483640;
 const int maxn=1005;
@@ -13,10 +13,10 @@ struct edge
 	edge(int from=0,int to=0,type cost=0):from(from),to(to),cost(cost){}
 }edg[10005];
 
-type ZLEdmonds(int n,int m,int root)//×Ô»·ÔÚÊäÈë½¨Í¼Ê±Ö±½ÓºöÂÔ£¬ÈçĞè¼ÓÈë£¬¿ÉÁí´æ
+type ZLEdmonds(int n,int m,int root)//è‡ªç¯åœ¨è¾“å…¥å»ºå›¾æ—¶ç›´æ¥å¿½ç•¥ï¼Œå¦‚éœ€åŠ å…¥ï¼Œå¯å¦å­˜
 {
 	type tot=0.0;
-	//ÅĞ¶ÏÊÇ·ñÓĞÊ÷
+	//åˆ¤æ–­æ˜¯å¦æœ‰æ ‘
 	while(true)
 	{
 		for(int i=1;i<=n;i++)in[i]=inf;
@@ -27,18 +27,18 @@ type ZLEdmonds(int n,int m,int root)//×Ô»·ÔÚÊäÈë½¨Í¼Ê±Ö±½ÓºöÂÔ£¬ÈçĞè¼ÓÈë£¬¿ÉÁí´æ
 			if(edg[i].cost<in[v] && u!=v){pre[v]=u;in[v]=edg[i].cost;}
 		}
 		for(int i=1;i<=n;i++)if(i!=root && in[i]==inf)return -1;
-		//ÕÒ»·
+		//æ‰¾ç¯
 		int cnt=1;
 		memset(id,0,sizeof(id));
 		memset(vis,0,sizeof(vis));
 		in[root]=0;
-		for(int i=1;i<=n;i++)//±ê¼ÇÃ¿¸ö»·
+		for(int i=1;i<=n;i++)//æ ‡è®°æ¯ä¸ªç¯
 		{
 			tot+=in[i];
 			int v=i;
 			while(vis[v]!=i && id[v]==0 && v!=root)
 			{vis[v]=i;v=pre[v];}
-			if(v!=root && id[v]==0)//Ëõµã
+			if(v!=root && id[v]==0)//ç¼©ç‚¹
 			{
 				for(int u=pre[v];u!=v;u=pre[u])id[u]=cnt;
 				id[v]=cnt++;
@@ -46,7 +46,7 @@ type ZLEdmonds(int n,int m,int root)//×Ô»·ÔÚÊäÈë½¨Í¼Ê±Ö±½ÓºöÂÔ£¬ÈçĞè¼ÓÈë£¬¿ÉÁí´æ
 		}
 		if(cnt==1)break;
 		for(int i=1;i<=n;i++)if(id[i]==0)id[i]=cnt++;
-		//½¨Á¢ĞÂÍ¼
+		//å»ºç«‹æ–°å›¾
 		for(int i=1;i<=m;i++)
 		{
 			int u=edg[i].from;

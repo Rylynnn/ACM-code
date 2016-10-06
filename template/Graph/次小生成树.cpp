@@ -1,4 +1,4 @@
-int a[maxn];
+﻿int a[maxn];
 int cost[maxn][maxn];
 int lowcost[maxn],fat[maxn],maxd[maxn][maxn];
 bool vis[maxn];

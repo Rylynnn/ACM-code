@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+ï»¿#include<bits/stdc++.h>
 
 const int maxn=1005;
 const double eps=1e-8;
@@ -17,13 +17,13 @@ void swap(double& p,double& q)
 struct Matrix
 {
 	double a[maxn][maxn];
-	//1-nĞĞ±íÊ¾µÚ1-n¸ö·½³Ì
-	//Ã¿ĞĞµÚ1-n¸öÔªËØ±íÊ¾ÏµÊı£¬µÚn+1¸öÔªËØ±íÊ¾µÈºÅÓÒ±ßµÄ³£Êı
+	//1-nè¡Œè¡¨ç¤ºç¬¬1-nä¸ªæ–¹ç¨‹
+	//æ¯è¡Œç¬¬1-nä¸ªå…ƒç´ è¡¨ç¤ºç³»æ•°ï¼Œç¬¬n+1ä¸ªå…ƒç´ è¡¨ç¤ºç­‰å·å³è¾¹çš„å¸¸æ•°
 }q;
 
 int ii,jj,nn;
 
-LL det(LL a[][maxn], int n) {//ÇóĞĞÁĞÊ½Öµ(ÕûÊı°æ)
+LL det(LL a[][maxn], int n) {//æ±‚è¡Œåˆ—å¼å€¼(æ•´æ•°ç‰ˆ)
     int i, j, k, r;
     LL res = 1;
     for (i = 0; i < n; i++) {
@@ -41,7 +41,7 @@ LL det(LL a[][maxn], int n) {//ÇóĞĞÁĞÊ½Öµ(ÕûÊı°æ)
     return res < 0 ? -res : res;
 }
 
-double FF(double x)//Ğè»ı·ÖµÄº¯Êı£¬×ÔĞĞĞŞ¸Ä
+double FF(double x)//éœ€ç§¯åˆ†çš„å‡½æ•°ï¼Œè‡ªè¡Œä¿®æ”¹
 {
 	return 1.0;
 }
@@ -52,7 +52,7 @@ double simpson(double x,double y)
 	return (y-x)/6.0*(FF(x)+FF(y)+4*FF(z));
 }
 
-double asr(double x,double y,double eeps,double A)//eepsÎª¾«¶È
+double asr(double x,double y,double eeps,double A)//eepsä¸ºç²¾åº¦
 {
 	double z=x+(y-x)/2.0;
 	double L=simpson(x,z);
@@ -61,12 +61,12 @@ double asr(double x,double y,double eeps,double A)//eepsÎª¾«¶È
 	else return asr(x,z,eeps/2.0,L)+asr(z,y,eeps/2.0,R);
 }
 
-double simpson_zsx(double x,double y,double eeps)//×ÔÊÊÓ¦ĞÁÆÕÉ­Ö÷º¯Êı
+double simpson_zsx(double x,double y,double eeps)//è‡ªé€‚åº”è¾›æ™®æ£®ä¸»å‡½æ•°
 {
 	return asr(x,y,eeps,simpson(x,y));
 }
 
-void gauss_eli(struct Matrix& p,int n)//¸ßË¹ÏûÔª
+void gauss_eli(struct Matrix& p,int n)//é«˜æ–¯æ¶ˆå…ƒ
 {
 	int i,j,k,r;
 	for(i=1;i<=n;i++)
@@ -95,13 +95,13 @@ LL gcd(LL a,LL b)
 	return b==0?a:gcd(b,a%b);
 }
 
-void tgcd(LL a,LL b,LL& d,LL& x,LL& y)//ÍØÕ¹Å·¼¸ÀïµÂ
+void tgcd(LL a,LL b,LL& d,LL& x,LL& y)//æ‹“å±•æ¬§å‡ é‡Œå¾·
 {
 	if(!b){d=a;x=1;y=0;}
 	else{tgcd(b,a%b,d,y,x);y-=x*(a/b);}
 }
 
-LL pow_mod(LL a,LL p,LL n)//Í¬Óà¿ìËÙÃİ
+LL pow_mod(LL a,LL p,LL n)//åŒä½™å¿«é€Ÿå¹‚
 {
 	if(p==0)return 1;
 	LL ans=pow_mod(a,p/2,n);
@@ -110,7 +110,7 @@ LL pow_mod(LL a,LL p,LL n)//Í¬Óà¿ìËÙÃİ
 	return ans;
 }
 
-int euler_phi(int n)//ÇóÅ·À­º¯Êı
+int euler_phi(int n)//æ±‚æ¬§æ‹‰å‡½æ•°
 {
 	int m=(int)sqrt(n+0.5);
 	int ans=n;
@@ -124,7 +124,7 @@ int euler_phi(int n)//ÇóÅ·À­º¯Êı
 	return ans;
 }
 
-void phi_table(int n)//Å·À­º¯Êı±í
+void phi_table(int n)//æ¬§æ‹‰å‡½æ•°è¡¨
 {
 	memset(phi,0,n+1);
 	phi[1]=1;
@@ -139,14 +139,14 @@ void phi_table(int n)//Å·À­º¯Êı±í
 	}
 }
 
-LL inv(LL a,LL n)//a¹ØÓÚnµÄÄæÔª
+LL inv(LL a,LL n)//aå…³äºnçš„é€†å…ƒ
 {
 	LL d,x,y;
 	tgcd(a,n,d,x,y);
 	return d==1?(x+n)%n:-1;
 }
 
-LL china(int n,int* a,int* m)//ÖĞ¹úÊ£Óà¶¨Àí
+LL china(int n,int* a,int* m)//ä¸­å›½å‰©ä½™å®šç†
 {
 	LL M=1,d,y,x=0;
 	for(int i=0;i<n;i++)M*=m[i];
@@ -159,7 +159,7 @@ LL china(int n,int* a,int* m)//ÖĞ¹úÊ£Óà¶¨Àí
 	return (x+M)%M;
 }
 
-int log_mod(int a,int b,int n)//Çó½âÄ£·½³Ìa^x=b(mod n),nÎªËØÊı,ÎŞ½â·µ»Ø-1
+int log_mod(int a,int b,int n)//æ±‚è§£æ¨¡æ–¹ç¨‹a^x=b(mod n),nä¸ºç´ æ•°,æ— è§£è¿”å›-1
 {
 	int m,v,e=1,i;
 	m=(int)sqrt(n+0.5);

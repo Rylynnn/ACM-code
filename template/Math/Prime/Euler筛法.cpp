@@ -1,4 +1,4 @@
-#include<cstdio>
+﻿#include<cstdio>
 #define MAXN 10000001
 int minFactor[MAXN];
 int prime[2000000], primeNum;

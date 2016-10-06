@@ -1,4 +1,4 @@
-struct edge
+﻿struct edge
 {
 	int p,q;
 	edge(int p=0,int q=0):p(p),q(q){}

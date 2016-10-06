@@ -1,4 +1,4 @@
-struct node
+﻿struct node
 {
 	int len,sum;
 	node* fail,*next[26];

@@ -1,11 +1,11 @@
-#include<cstdio>
+ï»¿#include<cstdio>
 #include<vector>
 using namespace std;
-vector<pair<int, int>> v[200001];//±ß¼°¸Ã±ßµÄ±àºÅ
-int w[200001];//±ßÈ¨
+vector<pair<int, int>> v[200001];//è¾¹åŠè¯¥è¾¹çš„ç¼–å·
+int w[200001];//è¾¹æƒ
 int n, cnt;
 int father[200001], depth[200001], top[200001], id[200001];
-int f[200001];//±ßÔÚÊ÷×´Êı×é£¨Ïß¶ÎÊ÷£©ÖĞµÄÎ»ÖÃ
+int f[200001];//è¾¹åœ¨æ ‘çŠ¶æ•°ç»„ï¼ˆçº¿æ®µæ ‘ï¼‰ä¸­çš„ä½ç½®
 int tmp[200001];
 int dfs1(int i, int fa)
 {

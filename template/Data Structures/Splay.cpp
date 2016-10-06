@@ -1,4 +1,4 @@
-struct tree
+﻿struct tree
 {
 	int key,size,le,ri,add,rev,min,pre;
 }a[maxn];

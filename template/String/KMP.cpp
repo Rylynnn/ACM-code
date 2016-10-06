@@ -1,4 +1,4 @@
-int nxt[maxn];
+﻿int nxt[maxn];
 char origin_string[maxn];
 char target_string[maxn];
 void get_nxt()

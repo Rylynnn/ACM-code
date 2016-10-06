@@ -1,4 +1,4 @@
-const int maxn=1005;
+﻿const int maxn=1005;
 double a[maxn],b[maxn];
 struct hei
 {

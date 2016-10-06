@@ -1,20 +1,20 @@
-/*
-@title: Cartesian Tree µÑ¿¨¶ûÊ÷
+ï»¿/*
+@title: Cartesian Tree ç¬›å¡å°”æ ‘
 @description:
-    Cartesian Tree µÑ¿¨¶ûÊ÷
-    ¿ÉÒÔÊµÏÖÏßĞÔÊ±¼äÄÚ½¨Á¢¾ßÓĞBSTĞÔÖÊµÄÊ÷
+    Cartesian Tree ç¬›å¡å°”æ ‘
+    å¯ä»¥å®ç°çº¿æ€§æ—¶é—´å†…å»ºç«‹å…·æœ‰BSTæ€§è´¨çš„æ ‘
 @structure:
     CartesianTreeNode:
-        parent:¡¡¸¸Ö¸Õë
-        l: ×óº¢×ÓÖ¸Õë
-        r: ÓÒº¢×ÓÖ¸Õë
+        parent:ã€€çˆ¶æŒ‡é’ˆ
+        l: å·¦å­©å­æŒ‡é’ˆ
+        r: å³å­©å­æŒ‡é’ˆ
 @arguments:
     BuildFromArray:
-        value: Ô´Êı×é
-        N: Êı×é´óĞ¡
-        index: Ô´Êı×éµÄÄæÓ³ÉäÊı×é
-        tree: Ä¿±ê½¨Ê÷Êı×éÄÚ´æÊ×µØÖ·
-        stack: ¶ÑÕ»¿Õ¼ä
+        value: æºæ•°ç»„
+        N: æ•°ç»„å¤§å°
+        index: æºæ•°ç»„çš„é€†æ˜ å°„æ•°ç»„
+        tree: ç›®æ ‡å»ºæ ‘æ•°ç»„å†…å­˜é¦–åœ°å€
+        stack: å †æ ˆç©ºé—´
 @performance:
     BuildFromArray:
         Time: O(N)
@@ -26,14 +26,14 @@
     index[i] in [0, N)
     |value| = |index| = |tree| = |stack| = N
 @note:
-    value Óë index »¥ÎªÄæÓ³Éä¹ÊÂú×ãË«ÉäĞÔÖÊ
+    value ä¸ index äº’ä¸ºé€†æ˜ å°„æ•…æ»¡è¶³åŒå°„æ€§è´¨
         index[value[i]] == i
         value[index[i]] == i
-    index ÎŞĞëÔÚº¯ÊıÍâ³õÊ¼»¯£¬½¨Ê÷¹ı³Ì¿ÉÒÔ¼ÆËã index
-    stack ÎŞĞëÔÚº¯ÊıÍâ³õÊ¼»¯£¬µ«½¨Ê÷¹ı³Ì¶Ô stack ÓĞÎÛÈ¾
-    ×îºó½áÊøµü´úµÄÊ±ºòÕ»µ×Ò»¶¨Îª value[0]
-    µÑ¿¨¶ûÊ÷µÄÊ÷¸ùÒ»¶¨Îª value[0]
-    Òò´ËµÑ¿¨¶ûÊ÷µÄ parent ²»Ò»¶¨Òª±£´æ£¬½ö±£´æº¢×ÓÖ¸ÕëÒ²¿ÉÒÔÍê³É±éÀú
+    index æ— é¡»åœ¨å‡½æ•°å¤–åˆå§‹åŒ–ï¼Œå»ºæ ‘è¿‡ç¨‹å¯ä»¥è®¡ç®— index
+    stack æ— é¡»åœ¨å‡½æ•°å¤–åˆå§‹åŒ–ï¼Œä½†å»ºæ ‘è¿‡ç¨‹å¯¹ stack æœ‰æ±¡æŸ“
+    æœ€åç»“æŸè¿­ä»£çš„æ—¶å€™æ ˆåº•ä¸€å®šä¸º value[0]
+    ç¬›å¡å°”æ ‘çš„æ ‘æ ¹ä¸€å®šä¸º value[0]
+    å› æ­¤ç¬›å¡å°”æ ‘çš„ parent ä¸ä¸€å®šè¦ä¿å­˜ï¼Œä»…ä¿å­˜å­©å­æŒ‡é’ˆä¹Ÿå¯ä»¥å®Œæˆéå†
 */
 
 struct CartesianTreeNode {
@@ -42,36 +42,36 @@ struct CartesianTreeNode {
 
 void BuildFromArray(int *value, int N, int *index, CartesianTreeNode *tree,
                     int *stack) {
-  // ¼ÆËãÄæÓ³Éä
+  // è®¡ç®—é€†æ˜ å°„
   for (int i = 0; i < N; i++) {
     index[value[i]] = i;
   }
-  // ³õÊ¼»¯½Úµã
+  // åˆå§‹åŒ–èŠ‚ç‚¹
   for (int i = 0; i < N; i++) {
     tree[i].parent = tree[i].left = tree[i].right = -1;
   }
-  int size = 0; // ³õÊ¼»¯Çå¿ÕÕ»
+  int size = 0; // åˆå§‹åŒ–æ¸…ç©ºæ ˆ
   for (int i = 0; i < N; i++) {
     int nextSize = size;
-    // Î¬»¤µ¥µ÷Õ»
+    // ç»´æŠ¤å•è°ƒæ ˆ
     while (nextSize > 0 && index[stack[nextSize - 1]] > index[i]) {
       nextSize--;
     }
-    // ÏÂÃæÁ½¸ö if Óï¾ä¿éµÄË³Ğò¿É±ä
-    if (nextSize > 0) { // Õ»ÖĞÓĞÔªËØ
-      // µ±Ç°ÔªËØÎªÕ»¶¥ÔªËØµÄÓÒº¢×Ó
+    // ä¸‹é¢ä¸¤ä¸ª if è¯­å¥å—çš„é¡ºåºå¯å˜
+    if (nextSize > 0) { // æ ˆä¸­æœ‰å…ƒç´ 
+      // å½“å‰å…ƒç´ ä¸ºæ ˆé¡¶å…ƒç´ çš„å³å­©å­
       int top = stack[nextSize - 1];
       tree[i].parent = top;
       tree[top].right = i;
     }
-    if (nextSize < size) { // µ¯¹ıÕ»
-      // ×îºó³öÕ»µÄÔªËØÎªµ±Ç°ÔªËØµÄ×óº¢×Ó
+    if (nextSize < size) { // å¼¹è¿‡æ ˆ
+      // æœ€åå‡ºæ ˆçš„å…ƒç´ ä¸ºå½“å‰å…ƒç´ çš„å·¦å­©å­
       int lastPop = stack[nextSize];
       tree[lastPop].parent = i;
       tree[i].left = lastPop;
     }
-    stack[nextSize++] = i; // ÈëÕ»
-    size = nextSize;       // ¸üĞÂÕ»´óĞ¡
+    stack[nextSize++] = i; // å…¥æ ˆ
+    size = nextSize;       // æ›´æ–°æ ˆå¤§å°
   }
 }
 
