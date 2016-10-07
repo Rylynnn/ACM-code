@@ -1,0 +1,25 @@
+i 插入模式
+esc 正常模式
+
+:e xxx.cpp 编辑xxx.cpp
+:w 保存
+:q 退出
+:wq 保存并退出
+
+ggvG 全选
+y 复制
+p 粘贴
+u 撤销
+"+y 复制到外部
+"+p 从外部粘贴
+正常模式下按v 再按ijkl可选定指定区域
+（vim的剪切板和外部的剪切板貌似是分开的？）
+
+（在vimrc正常工作的情况下）
+F9 编译
+F5 运行
+
+（你们貌似都不用多屏？）
+:split xxx.txt 横屏打开新文件 xxx.txt
+:vsplit xxx.txt  竖屏打开新文件 xxx.txt
+Ctrl+ww 移动到下一个窗口
