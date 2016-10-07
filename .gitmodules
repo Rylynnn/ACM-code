@@ -1,0 +1,3 @@
+[submodule "team"]
+    path = template
+    url = git@github.com:xjtuacm/SAJIHPTS-Snippets.git 
