@@ -1,4 +1,12 @@
-﻿struct mat
+﻿/*
+   for i ... 
+    for k ... if a[i][k] != 0
+      for j ...
+         a[i][j]+=a[i][k]*a[k][j]
+据说会快
+*/
+
+struct mat
 {
     int n;
     LL num[105][105];
