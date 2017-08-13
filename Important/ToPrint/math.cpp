@@ -52,6 +52,53 @@ struct Matrix
 
 int ii,jj,nn;
 
+struct Matrix{
+	double a[MAXN][MAXN], n, m;
+	void gauss(){
+		for (int i = 0; i < n; i++){
+			int k = i;
+			for (int j = i + 1; j < n; j++){
+				if (abs(a[j][i]) > abs(a[k][i]))k = j;
+			}
+			for (int j = i; j < m; j++)
+				swap(a[i][j], a[k][j]);
+			for (int j = i + 1; j < n; j++){
+				double r = a[j][i] / a[i][i];
+				for (int k = i + 1; k < m; k++)
+					a[j][k] -= r*a[i][k];
+			}
+		}
+		for (int i = n - 1; i >= 0; i--){
+			for (int k = n; k < m; k++){
+				for (int j = i + 1; j < n; j++)
+					a[i][k] -= a[i][j] * a[j][k];
+				a[i][k] /= a[i][i];
+			}
+		}
+	}
+	double det(){
+		int s = 0;
+		for (int i = 0; i < n; i++){
+			int k = i;
+			for (int j = i + 1; j < n; j++){
+				if (abs(a[j][i]) > abs(a[k][i]))k = j;
+			}
+			s += k == i;
+			for (int j = i; j < m; j++)
+				swap(a[i][j], a[k][j]);
+			for (int j = i + 1; j < n; j++){
+				double r = a[j][i] / a[i][i];
+				for (int k = i + 1; k < m; k++)
+					a[j][k] -= r*a[i][k];
+			}
+		}
+		double ret = 1;
+		for (int i = 0; i < n; i++)
+			ret *= a[i][i];
+		return s & 1 ? -ret : ret;
+	}
+};
+
 LL det(int n) {//整数行列式值，模意义下
     bool sign = false;
     for (int i = 1; i <= n; ++i) {
